@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f8f8;
+}
+
+.game {
+  text-align: center;
+  padding: 30px;
+}
+
+.bubbles {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.bubble {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+.bubble:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.timer {
+  margin-top: 40px;
+  font-size: 28px;
+  font-weight: bold;
+}
