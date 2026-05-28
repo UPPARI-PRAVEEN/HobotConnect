@@ -12,20 +12,37 @@ const SeatBooking = () => {
 
   ]
   const [isBooked,setIsBooked] = useState(false)
-  const [status,setStatus] =useState({
-    isBooked:false,
-    rowCol: null
-  })
- const handleRowCol =((row,col)=>{
-  console.log(row,col,"i am row")
-  if (status[rowCol].includes([row,col])){
-    setStatus((prev)=> [...prev,isBooked=True])
-  }else{
-    setStatus((prev)=> [...prev,isBooked=true,row=[row,col]])
+  const [status, setStatus] = useState([]);
+
+const handleRowCol = (row, col) => {
+  console.log(row, col, "i am row");
+  console.log(status, "i am status");
+
+  const exists = status.find(
+    (item) => item.rowcol[0] === row && item.rowcol[1] === col
+  );
+
+  if (exists) {
+    // remove (unbook)
+    setStatus((prev) =>
+      prev.filter(
+        (item) => !(item.rowcol[0] === row && item.rowcol[1] === col)
+      )
+    );
+  } else {
+    // add (book)
+    setStatus((prev) => [
+      ...prev,
+      { rowcol: [row, col], isBooked: true }
+    ]);
   }
-  
-  
- })
+};
+const changeColor = (row, col) => {
+  const exists = status.find(
+    (item) => item.rowcol[0] === row && item.rowcol[1] === col
+  );
+  return exists ? "red" : "blue";
+}
  console.log(status)
   return (
     <div>
@@ -39,7 +56,7 @@ const SeatBooking = () => {
             {item.map((colVal,col)=>{
             
               return(
-                <div onClick={(e)=>handleRowCol(row,col)} key={col} style={{gap:"10px",height:"50px",width:"50px",background:"blue"}}>
+                <div onClick={(e)=>handleRowCol(row,col)} key={col} style={{gap:"10px",height:"50px",width:"50px",background:changeColor(row,col),display:"flex",alignItems:"center",justifyContent:"center",color:"white",cursor:"pointer"}}>
                   {colVal}
                 </div>
               )
