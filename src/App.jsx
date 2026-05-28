@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom'
 // import TransitionsPage from './Components/pages/TransitionsPage'
 // import JSPage from './Components/pages/JSPage'
 import SeatBooking from './Components/Front-end-tasks/SeatBooking'
+import TicTokTeo from './Components/Front-end-tasks/TicTokTeo'
 
 const App = () => {
   return (
@@ -19,7 +20,9 @@ const App = () => {
     //   <Route path="/js" element={<JSPage />} />
     // </Routes>
     <>
-    <SeatBooking />
+    {/* <SeatBooking /> */}
+    <TicTokTeo />
+
     </>
   )
 }
