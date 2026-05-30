@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 // import JSPage from './Components/pages/JSPage'
 import SeatBooking from './Components/Front-end-tasks/SeatBooking'
 import TicTokTeo from './Components/Front-end-tasks/TicTokTeo'
+import ResumeSender from './Components/ResumeSender'
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
     // </Routes>
     <>
     {/* <SeatBooking /> */}
-    <TicTokTeo />
+    {/* <TicTokTeo /> */}
+    <ResumeSender />
 
     </>
   )
