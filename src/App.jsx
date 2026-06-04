@@ -10,6 +10,7 @@ import SeatBooking from './Components/Front-end-tasks/SeatBooking'
 import TicTokTeo from './Components/Front-end-tasks/TicTokTeo'
 import ResumeSender from './Components/ResumeSender'
 import ResumeGenerator from './Components/resume_generator'
+import Throtliing from './Components/Front-end-tasks/Throtliing'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
     <>
     {/* <SeatBooking /> */}
     {/* <TicTokTeo /> */}
+    <Throtliing />
     <ResumeSender />
     <ResumeGenerator />
 
