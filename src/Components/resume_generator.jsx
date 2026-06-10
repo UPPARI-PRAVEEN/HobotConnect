@@ -60,6 +60,73 @@ const PRAVEEN_DATA = {
   softSkills: ["Planning", "Teamwork", "Active Listening", "Organized"],
 };
 
+const Pavan_DATA = {
+  name: "UPPARI PAVAN",
+  title: "Software Quality Engineering",
+  contact: {
+    phone: "+91 7382778745",
+    email: "upparipavan2001@gmail.com",
+    linkedin: "LinkedIn",
+    github: "Github",
+    portfolio: "Portfolio",
+  },
+  education: {
+    institution: "Vikrama Simhapuri University, Kavali",
+    degree: "Master of Computer Applicaton(MCA)",
+    grade: "78%",
+    duration: "June 2021 – April 2023",
+    location: "Andhra Pradesh, India",
+  },
+  technicalSkills: {
+    Languages: "C,JavaScript, java, Python, AWS",
+    Databases: "SQL (Joins, Indexing), MongoDB",
+    Tools: "Selenium Web Driver, Git, TestNG, Junit, Jenkins, PostMan,Selenium Grid, Cucumber,Jira,ADO Dashboard,ServiceNow,Playwright, CI/CD Pipelines",
+    Databases: "SQL,Oracle,Postgress DB",
+    Systems: "Linux, Windows,Cloud Saas Products",
+  },
+  experience: [
+    {
+      company: "Accenture 2+ years experience",
+      Role: "Quality Engineer / QA Test Engineer",
+      duration: "April 2024 – Present ",
+      Project: "TRUE SUPPLIER MARKET PLACE",
+      bullets: [
+        "Project Description: TRUE SUPPLIER MARKET PLACE is a role-based Single Page Web Application that enables users, suppliers, and administrators to manage supplier onboarding, form submissions, approvals, and marketplace operations through a streamlined web interface.Thoroughly involved in different types of testing like Smoke Testing, Functional Testing, System Integration Testing, Sanity Testing, UAT Testing, and Regression Testing",
+        "Performed end-to-end testing of a B2C Single Page Application (SPA) involving multiple user roles and workflows",
+        "Validated form-based functionality, business rules, data submission, and approval processes across different modules",
+        "Executed Smoke, Functional, Sanity, System Integration, User Acceptance Testing (UAT), and Regression Testing",
+        "Designed, reviewed, and executed test cases based on business requirements and acceptance criteria",
+        "Tested role-based access control (RBAC) and validated user-specific permissions and navigation flows",
+        "Participated in Agile ceremonies including backlog refinement, sprint planning, and PI planning sessions",
+        "Conducted cross-browser and cross-platform compatibility testing to ensure consistent user experience",
+        "Performed accessibility testing to verify compliance with WCAG standards",
+        "Identified, documented, and tracked defects using bug tracking tools and collaborated with developers for resolution",
+        "Validated complete business workflows including supplier registration, form submission, approval/rejection processes, and user management activities",
+        "Executed regression test suites after enhancements and bug fixes to ensure application stability",
+        "Delivered testing status updates, defect reports, and feature demonstrations to Product Owners and stakeholders"
+     ]
+    },
+  ],
+
+  internship: {
+title: "Blood Bank Management System | QA / Software Testing",
+bullets: [
+"Performed manual testing on a full-stack application managing blood inventory across donors, hospitals, and organizations.",
+"Designed and executed test cases to validate API functionality, authentication flows, and data integrity.",
+"Identified, reported, and tracked bugs using structured test reports and ensured timely resolution with the development team.",
+"Tested key features such as blood availability tracking, donation workflows, and reporting modules.",
+"Validated MongoDB data consistency and ensured accuracy of CRUD operations through backend testing.",
+"Completed 6-month internship with hands-on experience in end-to-end application testing and quality assurance processes."
+],
+},
+
+  
+  certifications: [
+    "GitHub Copiolt-300",
+  ],
+  softSkills: ["Decision-Making", "Team Collaboration", " Communication", "Problem-solving"],
+};
+
 const systemPrompt = `You are an expert resume tailoring assistant. Given a candidate's resume data and a job description, you will return a tailored resume in strict JSON format.
 
 Your job:
@@ -95,7 +162,10 @@ export default function ResumeGenerator() {
   const [tailored, setTailored] = useState(null);
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState("input");
+  const [candidate, setCandidate] = useState("PRAVEEN");
   const resumeRef = useRef(null);
+
+  const candidateData = candidate === "PRAVEEN" ? PRAVEEN_DATA : Pavan_DATA;
 
   const generateResume = async () => {
     if (!jd.trim()) return;
@@ -114,7 +184,7 @@ export default function ResumeGenerator() {
             { role: "system", content: systemPrompt },
             {
               role: "user",
-              content: `CANDIDATE DATA:\n${JSON.stringify(PRAVEEN_DATA, null, 2)}\n\nJOB DESCRIPTION:\n${jd}`,
+              content: `CANDIDATE DATA:\n${JSON.stringify(candidateData, null, 2)}\n\nJOB DESCRIPTION:\n${jd}`,
             },
           ],
         }),
@@ -165,8 +235,8 @@ export default function ResumeGenerator() {
   };
 
   const resumeData = tailored
-    ? { ...PRAVEEN_DATA, ...tailored }
-    : PRAVEEN_DATA;
+    ? { ...candidateData, ...tailored }
+    : candidateData;
 
   return (
     <div style={{ fontFamily: "var(--font-sans)", maxWidth: 860, margin: "0 auto", padding: "1.5rem 1rem" }}>
@@ -196,6 +266,37 @@ export default function ResumeGenerator() {
             {tab === "input" ? "Job Description" : "Resume Preview"}
           </button>
         ))}
+      </div>
+
+      {/* Candidate Selection */}
+      <div style={{ marginBottom: 16, padding: "12px", borderRadius: "var(--border-radius-md)", border: "0.5px solid var(--color-border-secondary)", background: "var(--color-background-secondary)" }}>
+        <label style={{ fontSize: 14, fontWeight: 500, color: "var(--color-text-primary)", marginBottom: 10, display: "block" }}>
+          Select Candidate:
+        </label>
+        <div style={{ display: "flex", gap: 20 }}>
+          <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 14 }}>
+            <input
+              type="radio"
+              name="candidate"
+              value="PRAVEEN"
+              checked={candidate === "PRAVEEN"}
+              onChange={(e) => setCandidate(e.target.value)}
+              style={{ cursor: "pointer" }}
+            />
+            <span style={{ color: "var(--color-text-primary)" }}>Uppari Praveen (SDE-I)</span>
+          </label>
+          <label style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontSize: 14 }}>
+            <input
+              type="radio"
+              name="candidate"
+              value="PAVAN"
+              checked={candidate === "PAVAN"}
+              onChange={(e) => setCandidate(e.target.value)}
+              style={{ cursor: "pointer" }}
+            />
+            <span style={{ color: "var(--color-text-primary)" }}>Uppari Pavan (QA Engineer)</span>
+          </label>
+        </div>
       </div>
 
       {activeTab === "input" && (
@@ -286,14 +387,14 @@ export default function ResumeGenerator() {
           >
             {/* Header */}
             <div className="resume-name" style={{ fontSize: 20, fontWeight: "bold", textAlign: "center", letterSpacing: 2 }}>
-              {PRAVEEN_DATA.name}
+              {candidateData.name}
             </div>
             <div className="resume-title" style={{ textAlign: "center", fontSize: 10, marginTop: 2 }}>
-              {resumeData.title || PRAVEEN_DATA.title}
+              {resumeData.title || candidateData.title}
             </div>
             <div className="resume-contact" style={{ textAlign: "center", fontSize: 9, marginTop: 3, marginBottom: 6 }}>
-              {PRAVEEN_DATA.contact.phone} &nbsp;||&nbsp; {PRAVEEN_DATA.contact.email} &nbsp;||&nbsp;
-              {PRAVEEN_DATA.contact.linkedin} &nbsp;||&nbsp; {PRAVEEN_DATA.contact.github} &nbsp;||&nbsp; {PRAVEEN_DATA.contact.portfolio}
+              {candidateData.contact.phone} &nbsp;||&nbsp; {candidateData.contact.email} &nbsp;||&nbsp;
+              {candidateData.contact.linkedin} &nbsp;||&nbsp; {candidateData.contact.github} &nbsp;||&nbsp; {candidateData.contact.portfolio}
             </div>
 
             {/* Summary (if tailored) */}
@@ -308,18 +409,18 @@ export default function ResumeGenerator() {
             <SectionHead title="Education" />
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: "9.5pt" }}>
               <div>
-                <strong>{PRAVEEN_DATA.education.institution}</strong>
-                <div>{PRAVEEN_DATA.education.degree} with {PRAVEEN_DATA.education.grade}</div>
+                <strong>{candidateData.education.institution}</strong>
+                <div>{candidateData.education.degree} with {candidateData.education.grade}</div>
               </div>
               <div style={{ textAlign: "right" }}>
-                <div>{PRAVEEN_DATA.education.duration}</div>
-                <div>{PRAVEEN_DATA.education.location}</div>
+                <div>{candidateData.education.duration}</div>
+                <div>{candidateData.education.location}</div>
               </div>
             </div>
 
             {/* Technical Skills */}
             <SectionHead title="Technical Skills" />
-            {Object.entries(resumeData.technicalSkills || PRAVEEN_DATA.technicalSkills).map(([k, v]) => (
+            {Object.entries(resumeData.technicalSkills || candidateData.technicalSkills).map(([k, v]) => (
               <div key={k} style={{ fontSize: "9.5pt", marginBottom: 2 }}>
                 <strong>{k}:</strong> {v}
               </div>
@@ -327,7 +428,7 @@ export default function ResumeGenerator() {
 
             {/* Experience */}
             <SectionHead title="Experience" />
-            {(resumeData.experience || PRAVEEN_DATA.experience).map((exp, i) => (
+            {(resumeData.experience || candidateData.experience).map((exp, i) => (
               <div key={i} style={{ marginBottom: 8 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "10pt" }}>
                   <strong>{exp.company}</strong>
@@ -345,9 +446,9 @@ export default function ResumeGenerator() {
             {/* Internship */}
             <SectionHead title="Internship" />
             <div style={{ marginBottom: 8 }}>
-              <strong style={{ fontSize: "9.5pt" }}>{(resumeData.internship || PRAVEEN_DATA.internship).title}</strong>
+              <strong style={{ fontSize: "9.5pt" }}>{(resumeData.internship || candidateData.internship).title}</strong>
               <ul style={{ paddingLeft: 16, margin: "2px 0" }}>
-                {(resumeData.internship || PRAVEEN_DATA.internship).bullets.map((b, i) => (
+                {(resumeData.internship || candidateData.internship).bullets.map((b, i) => (
                   <li key={i} style={{ fontSize: "9.5pt", lineHeight: 1.5 }}>{b}</li>
                 ))}
               </ul>
@@ -355,14 +456,14 @@ export default function ResumeGenerator() {
 
             {/* Certifications */}
             <SectionHead title="Certifications" />
-            {PRAVEEN_DATA.certifications.map((c, i) => (
+            {candidateData.certifications.map((c, i) => (
               <div key={i} style={{ fontSize: "9.5pt", marginBottom: 2 }}>▸ {c}</div>
             ))}
 
             {/* Soft Skills */}
             <SectionHead title="Soft Skills" />
             <div style={{ fontSize: "9.5pt" }}>
-              {PRAVEEN_DATA.softSkills.join(" · ")}
+              {candidateData.softSkills.join(" · ")}
             </div>
           </div>
         </div>

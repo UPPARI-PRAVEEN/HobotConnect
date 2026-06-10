@@ -25,8 +25,8 @@ const App = () => {
     <>
     {/* <SeatBooking /> */}
     {/* <TicTokTeo /> */}
-    <Throtliing />
-    <ResumeSender />
+    {/* <Throtliing /> */}
+    {/* <ResumeSender /> */}
     <ResumeGenerator />
 
     </>
