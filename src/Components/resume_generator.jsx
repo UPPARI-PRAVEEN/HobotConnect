@@ -17,14 +17,16 @@ const PRAVEEN_DATA = {
     duration: "June 2020 – April 2024",
     location: "Andhra Pradesh, India",
   },
+
   technicalSkills: {
     Languages: "JavaScript, TypeScript, Python",
     FrontEnd: "React.js, Redux (RTK Query), Bootstrap, Tailwind",
     BackEnd: "Node.js, Express.js, REST APIs",
     Databases: "SQL (Joins, Indexing), MongoDB",
     Tools: "Docker, CI/CD, Git, Vercel, Postman",
-    Others: "REST APIs, Responsive web design",
     "Cloud Tools": "AWS (EC2, DynamoDB, Lambda)",
+    "Generative AI": "LLMs, Prompt Engineering, AI API Integration, Structured Output Parsing",
+    Others: "REST APIs, Responsive Web Design",
   },
   experience: [
     {
@@ -32,13 +34,20 @@ const PRAVEEN_DATA = {
       role: "SDE-I",
       duration: "Nov 2024 – June 2025",
       bullets: [
-        "Leading front-end development of Kitaabh, a FinTech SaaS product rivaling Tally, focusing on scalable, intuitive, and efficient UX/UI.",
-        "Building modular, maintainable components using React.js, Redux, RTK Query, PrimeReact and custom hooks for seamless desktop and web experiences.",
-        "Optimized database performance by designing efficient SQL queries using joins and indexing, and structured scalable schemas to improve query execution time and data retrieval efficiency.",
-        "Implemented secure backend APIs using Node.js and Express with JWT-based authentication, role-based access control, and robust request validation.",
-        "Improved API response time by ~30% using optimized queries.",
-        "Reduced redundant API calls using RTK Query caching.",
-        "Managed complex financial data tables and forms with dynamic validations using Formik and Yup, increasing data accuracy and submission efficiency.",
+        "Leading front-end development of Kitaabh, a FinTech SaaS product rivaling Tally, focusing on scalable and intuitive UX/UI.",
+
+        "Built modular and reusable components using React.js, Redux (RTK Query), and custom hooks for seamless web and desktop experiences.",
+
+        "Designed and optimized SQL queries using joins and indexing, improving data retrieval efficiency and reducing query execution time.",
+
+        "Developed secure backend APIs using Node.js and Express with JWT-based authentication and role-based access control.",
+
+        "Improved API performance by ~30% through query optimization and efficient backend design.",
+
+        "Reduced redundant API calls using RTK Query caching, improving application performance and responsiveness.",
+
+        "Handled complex financial data forms with dynamic validations using Formik and Yup, increasing data accuracy.",
+        "Integrated Generative AI (LLMs) to build AI-powered resume tailoring, dynamically generating job-specific content using prompt engineering and structured JSON parsing.",
       ],
     },
   ],
@@ -55,8 +64,9 @@ const PRAVEEN_DATA = {
   certifications: [
     "React.js Course Completion Certificate from InternShala",
     "Node.js, Express.js and MongoDB Course Completion Certificate from Udemy",
-    "AWS Three Months of Internship Certificate from APSSDC",
+    "AWS Internship Certificate from APSSDC",
   ],
+
   softSkills: ["Planning", "Teamwork", "Active Listening", "Organized"],
 };
 
