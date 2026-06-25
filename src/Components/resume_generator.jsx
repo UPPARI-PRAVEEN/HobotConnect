@@ -408,12 +408,12 @@ export default function ResumeGenerator() {
             </div>
 
             {/* Summary (if tailored) */}
-            {tailored?.summary && (
+            {/* {tailored?.summary && (
               <>
                 <SectionHead title="Professional Summary" />
                 <p className="summary-text" style={{ fontSize: "9.5pt", lineHeight: 1.5, marginBottom: 6 }}>{tailored.summary}</p>
               </>
-            )}
+            )} */}
 
             {/* Education */}
             <SectionHead title="Education" />
