@@ -51,6 +51,40 @@ const PRAVEEN_DATA = {
       ],
     },
   ],
+  projects: [
+  {
+    title: "AI Code Review Assistant (LLM आधारित)",
+    bullets: [
+      "Built an AI-powered code review system using Large Language Models (LLMs) to analyze and improve Python and JavaScript code quality.",
+      
+      "Integrated LLM APIs to automatically detect bugs, suggest optimizations, and generate clean, maintainable code with explanations.",
+      
+      "Implemented prompt engineering techniques to provide structured feedback including edge cases, performance improvements, and best practices.",
+      
+      "Developed REST APIs using FastAPI to handle code input, processing, and response generation efficiently.",
+      
+      "Designed reusable modules for code parsing and validation, improving system scalability and maintainability.",
+      
+      "Enhanced developer productivity by automating manual code review tasks and reducing debugging time.",
+    ],
+  },
+  {
+    title: "Smart Document Q&A System using RAG",
+    bullets: [
+      "Developed a Retrieval-Augmented Generation (RAG) based system to enable intelligent question answering over uploaded documents (PDFs, text files).",
+      
+      "Implemented document chunking, embedding generation, and semantic search using FAISS for efficient vector storage and retrieval.",
+      
+      "Integrated LLMs to generate context-aware answers by combining retrieved document chunks with user queries, reducing hallucinations.",
+      
+      "Built backend services using FastAPI to handle document upload, processing, and query handling workflows.",
+      
+      "Improved answer accuracy by leveraging similarity search (cosine similarity) and top-k relevant context retrieval.",
+      
+      "Added support for multi-document querying and contextual chat history for enhanced user interaction.",
+    ],
+  },
+],
   internship: {
     title: "Blood Bank Management System | MERN Stack",
     bullets: [
@@ -137,34 +171,71 @@ bullets: [
   softSkills: ["Decision-Making", "Team Collaboration", " Communication", "Problem-solving"],
 };
 
-const systemPrompt = `You are an expert resume tailoring assistant. Given a candidate's resume data and a job description, you will return a tailored resume in strict JSON format.
+const systemPrompt = `You are an expert resume tailoring assistant.
 
-Your job:
-1. Rewrite bullet points in experience/internship to match the job description keywords and priorities
-2. Reorder or emphasize technical skills that are most relevant
-3. Adjust the professional title slightly if appropriate
-4. Keep all personal/contact/education info unchanged
-5. Keep certifications and soft skills as-is
-6. Make bullet points achievement-oriented and keyword-rich for ATS
+You will be given:
+1) Candidate resume data (in JSON)
+2) A Job Description (JD)
 
-Return ONLY valid JSON (no markdown, no backticks) with this exact structure:
+Your task is to deeply analyze the Job Description and then tailor the resume accordingly.
+
+Core Instructions:
+1. Extract key requirements from the JD:
+   - Skills (technical + tools + frameworks)
+   - Role responsibilities
+   - Keywords (important for ATS)
+   - Seniority level and role expectations
+
+2. Tailor the resume based on JD:
+   - Rewrite experience/internship bullet points to strongly align with JD responsibilities and keywords
+   - Make each bullet achievement-oriented with measurable impact where possible
+   - Use strong action verbs and ATS-friendly phrasing
+   - Prioritize and reorder bullet points based on JD relevance
+
+3. Technical Skills Optimization:
+   - Reorder and group skills based on JD importance
+   - Highlight matching technologies first
+   - Remove or de-emphasize irrelevant skills (but do not fabricate new ones)
+
+4. Title Optimization:
+   - Slightly adjust the candidate’s title to better match the JD (e.g., “Full Stack Developer” → “Full Stack Developer (React & Node.js)”)
+   - Do NOT exaggerate seniority
+
+5. Summary Generation:
+   - Write a 2–3 sentence professional summary
+   - Clearly reflect JD keywords, role alignment, and candidate strengths
+
+6. Strict Rules:
+   - DO NOT change personal details, education, or certifications
+   - DO NOT invent fake experience or skills
+   - ONLY rephrase, reorder, and optimize existing content
+   - Ensure content is concise, impactful, and ATS-optimized
+
+Output Format (STRICT JSON ONLY — no markdown, no explanation):
 {
   "title": "string",
-  "technicalSkills": { "Category": "comma-separated skills", ... },
+  "technicalSkills": {
+    "Category": "comma-separated skills"
+  },
   "experience": [
     {
       "company": "string",
       "role": "string",
       "duration": "string",
-      "bullets": ["string", ...]
+      "bullets": ["string"]
     }
   ],
   "internship": {
     "title": "string",
-    "bullets": ["string", ...]
+    "bullets": ["string"]
   },
-  "summary": "2-3 sentence professional summary tailored to the job"
-}`;
+  "summary": "string"
+}
+
+Important:
+- Return ONLY valid JSON
+- No backticks, no markdown, no extra text
+- Ensure the output can be directly parsed by JSON.parse()`;
 
 export default function ResumeGenerator() {
   const [jd, setJd] = useState("");
@@ -452,6 +523,23 @@ export default function ResumeGenerator() {
                 </ul>
               </div>
             ))}
+
+            {/* Projects */}
+            {(resumeData.projects || candidateData.projects) && (resumeData.projects || candidateData.projects).length > 0 && (
+              <>
+                <SectionHead title="Projects" />
+                {(resumeData.projects || candidateData.projects).map((project, i) => (
+                  <div key={i} style={{ marginBottom: 8 }}>
+                    <strong style={{ fontSize: "9.5pt" }}>{project.title}</strong>
+                    <ul style={{ paddingLeft: 16, margin: "2px 0" }}>
+                      {project.bullets.map((b, j) => (
+                        <li key={j} style={{ fontSize: "9.5pt", lineHeight: 1.5 }}>{b}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </>
+            )}
 
             {/* Internship */}
             <SectionHead title="Internship" />
