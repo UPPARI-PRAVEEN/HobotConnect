@@ -53,7 +53,7 @@ const PRAVEEN_DATA = {
   ],
   projects: [
   {
-    title: "AI Code Review Assistant (LLM आधारित)",
+    title: "AI Code Review Assistant",
     bullets: [
       "Built an AI-powered code review system using Large Language Models (LLMs) to analyze and improve Python and JavaScript code quality.",
       
@@ -152,17 +152,17 @@ const Pavan_DATA = {
     },
   ],
 
-  internship: {
-title: "Blood Bank Management System | QA / Software Testing",
-bullets: [
-"Performed manual testing on a full-stack application managing blood inventory across donors, hospitals, and organizations.",
-"Designed and executed test cases to validate API functionality, authentication flows, and data integrity.",
-"Identified, reported, and tracked bugs using structured test reports and ensured timely resolution with the development team.",
-"Tested key features such as blood availability tracking, donation workflows, and reporting modules.",
-"Validated MongoDB data consistency and ensured accuracy of CRUD operations through backend testing.",
-"Completed 6-month internship with hands-on experience in end-to-end application testing and quality assurance processes."
-],
-},
+//   internship: {
+// title: "Blood Bank Management System | QA / Software Testing",
+// bullets: [
+// "Performed manual testing on a full-stack application managing blood inventory across donors, hospitals, and organizations.",
+// "Designed and executed test cases to validate API functionality, authentication flows, and data integrity.",
+// "Identified, reported, and tracked bugs using structured test reports and ensured timely resolution with the development team.",
+// "Tested key features such as blood availability tracking, donation workflows, and reporting modules.",
+// "Validated MongoDB data consistency and ensured accuracy of CRUD operations through backend testing.",
+// "Completed 6-month internship with hands-on experience in end-to-end application testing and quality assurance processes."
+// ],
+// },
 
   
   certifications: [
@@ -225,10 +225,7 @@ Output Format (STRICT JSON ONLY — no markdown, no explanation):
       "bullets": ["string"]
     }
   ],
-  "internship": {
-    "title": "string",
-    "bullets": ["string"]
-  },
+  
   "summary": "string"
 }
 
@@ -499,13 +496,7 @@ export default function ResumeGenerator() {
               </div>
             </div>
 
-            {/* Technical Skills */}
-            <SectionHead title="Technical Skills" />
-            {Object.entries(resumeData.technicalSkills || candidateData.technicalSkills).map(([k, v]) => (
-              <div key={k} style={{ fontSize: "9.5pt", marginBottom: 2 }}>
-                <strong>{k}:</strong> {v}
-              </div>
-            ))}
+            
 
             {/* Experience */}
             <SectionHead title="Experience" />
@@ -541,7 +532,7 @@ export default function ResumeGenerator() {
               </>
             )}
 
-            {/* Internship */}
+            {/* Internship
             <SectionHead title="Internship" />
             <div style={{ marginBottom: 8 }}>
               <strong style={{ fontSize: "9.5pt" }}>{(resumeData.internship || candidateData.internship).title}</strong>
@@ -550,7 +541,14 @@ export default function ResumeGenerator() {
                   <li key={i} style={{ fontSize: "9.5pt", lineHeight: 1.5 }}>{b}</li>
                 ))}
               </ul>
-            </div>
+            </div> */}
+            {/* Technical Skills */}
+            <SectionHead title="Technical Skills" />
+            {Object.entries(resumeData.technicalSkills || candidateData.technicalSkills).map(([k, v]) => (
+              <div key={k} style={{ fontSize: "9.5pt", marginBottom: 2 }}>
+                <strong>{k}:</strong> {v}
+              </div>
+            ))}
 
             {/* Certifications */}
             <SectionHead title="Certifications" />
