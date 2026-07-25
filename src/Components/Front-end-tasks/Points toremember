@@ -1,0 +1,4 @@
+ setData([...data,formData])//Directly adding the formData to the existing data array using the spread operator. This will create a new array that includes all the previous data along with the new formData.
+
+ <input type = 'text' value = {formData.name} onChange={(e)=> setFormData((prev)=> ({...prev,name:e.target.value}))} /><br></br>
+ updating the formData state with the new name value entered by the user. The onChange event handler captures the input value and updates the formData state while preserving the other properties using the spread operator.

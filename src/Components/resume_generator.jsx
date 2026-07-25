@@ -557,10 +557,10 @@ export default function ResumeGenerator() {
             ))}
 
             {/* Soft Skills */}
-            <SectionHead title="Soft Skills" />
+            {/* <SectionHead title="Soft Skills" />
             <div style={{ fontSize: "9.5pt" }}>
               {candidateData.softSkills.join(" · ")}
-            </div>
+            </div> */}
           </div>
         </div>
       )}
