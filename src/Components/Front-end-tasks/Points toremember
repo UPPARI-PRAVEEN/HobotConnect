@@ -2,3 +2,19 @@
 
  <input type = 'text' value = {formData.name} onChange={(e)=> setFormData((prev)=> ({...prev,name:e.target.value}))} /><br></br>
  updating the formData state with the new name value entered by the user. The onChange event handler captures the input value and updates the formData state while preserving the other properties using the spread operator.
+
+
+ Throuttling: now - lastCall.current >= delay  //In case of throttling, this condition checks if the time elapsed since the last function call is greater than or equal to the specified delay. If true, it allows the function to execute; otherwise, it prevents it from being called too frequently.
+ now - lastCall.current >= delay  //In case of debouncing, this condition checks if the time elapsed 
+ since the last function call is greater than or equal to the specified delay. If true, it allows the 
+ function to execute; otherwise, it prevents it from being called too frequently.
+
+ Debounce
+ declare timer
+ ruturn function
+ clearTimeout(timer)
+ assiger timer to setTimeout(() => { //Set a timeout to delay the execution of the function by the specified delay time. This helps in preventing the function from being called too frequently.
+  func.apply(this, args) //Execute the original function with the provided arguments after the delay.
+ }, delay)
+ 
+
